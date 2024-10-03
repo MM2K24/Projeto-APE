@@ -1,0 +1,59 @@
+body {
+    background-color: #e9ecef; /* Fundo cinza claro */
+    font-family: 'Arial', sans-serif; /* Fonte moderna */
+}
+
+h1 {
+    color: #007bff; /* Azul vibrante */
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+    text-transform: uppercase; /* Letras maiúsculas */
+}
+
+.card {
+    background-color: #ffffff; /* Fundo branco */
+    border: 2px solid #007bff; /* Borda azul */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra do cartão */
+    margin: 15px 0; /* Margem acima e abaixo do cartão */
+    transition: transform 0.3s; /* Transição suave */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+}
+
+.card-title {
+    font-size: 1.75rem; /* Tamanho do título do cartão */
+    color: #343a40; /* Cor do título do cartão */
+    margin-bottom: 1rem; /* Espaçamento abaixo do título */
+}
+
+.list-group-item {
+    background-color: #f8f9fa; /* Fundo claro dos itens da lista */
+    border: none; /* Sem borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    margin: 10px 0; /* Margem entre itens */
+    padding: 15px; /* Padding interno */
+    transition: background-color 0.3s; /* Transição suave */
+}
+
+.list-group-item:hover {
+    background-color: #007bff; /* Fundo azul ao passar o mouse */
+    color: #ffffff; /* Texto branco ao passar o mouse */
+}
+
+.list-group-item span {
+    font-weight: 600; /* Negrito para os rótulos */
+}
+
+.text-center {
+    margin-bottom: 1.5rem; /* Espaçamento abaixo do texto centralizado */
+}
+
+@media (max-width: 768px) {
+    .card {
+        margin: 10px; /* Margem menor em telas pequenas */
+    }
+}
