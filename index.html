@@ -1,67 +1,240 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+
+<html>
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estatísticas de Candidatos</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { border: 1px solid #ddd; padding: 8px; }
-        th { background-color: #f2f2f2; }
-    </style>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Estatísticas Eleitorais - Eleições 2024</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <h1>Estatísticas de Candidatos</h1>
 
-    <h2>Quantidade de Candidatos por Cargo</h2>
-    <table id="candidatosPorCargo"></table>
+<body class="container mx-auto">
+    <h1 class="py-4 font-bold text-gray-700 text-2xl text-center border-b">Estatísticas de Candidatos - Eleições 2024</h1>
+    <div class="mt-8 flex flex-col mx-auto max-w-[800px]">
+        
+        <div class="border p-4 rounded m-4">
+            <h2 class="text-gray-600 text-center text-xl font-bold mb-4 pb-4 border-b">Quantidade de Candidatos por Cargo</h2>
+            <ul>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">VEREADOR:</span> <span>9127</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">VICE-PREFEITO:</span> <span>531</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">PREFEITO:</span> <span>526</span></li>
+                
+            </ul>
+        </div>
 
-    <h2>Partidos com Candidatos a Cargo de Prefeito</h2>
-    <ul id="partidosPrefeito"></ul>
+        <div class="border p-4 rounded m-4">
+            <h2 class="text-gray-600 text-center text-xl font-bold mb-4 pb-4 border-b">Partidos com Candidatos ao Cargo de Prefeito</h2>
+            <ul class="flex flex-wrap">
+                
+                <li class="hover:scale-105 cursor-default duration-300 border p-4 rounded m-2 grow">PL</li>
+                
+                <li class="hover:scale-105 cursor-default duration-300 border p-4 rounded m-2 grow">PODE</li>
+                
+                <li class="hover:scale-105 cursor-default duration-300 border p-4 rounded m-2 grow">PP</li>
+                
+                <li class="hover:scale-105 cursor-default duration-300 border p-4 rounded m-2 grow">REPUBLICANOS</li>
+                
+                <li class="hover:scale-105 cursor-default duration-300 border p-4 rounded m-2 grow">UNIÃO</li>
+                
+                <li class="hover:scale-105 cursor-default duration-300 border p-4 rounded m-2 grow">MDB</li>
+                
+                <li class="hover:scale-105 cursor-default duration-300 border p-4 rounded m-2 grow">PT</li>
+                
+                <li class="hover:scale-105 cursor-default duration-300 border p-4 rounded m-2 grow">PSB</li>
+                
+                <li class="hover:scale-105 cursor-default duration-300 border p-4 rounded m-2 grow">DC</li>
+                
+                <li class="hover:scale-105 cursor-default duration-300 border p-4 rounded m-2 grow">PCO</li>
+                
+                <li class="hover:scale-105 cursor-default duration-300 border p-4 rounded m-2 grow">UP</li>
+                
+                <li class="hover:scale-105 cursor-default duration-300 border p-4 rounded m-2 grow">AVANTE</li>
+                
+                <li class="hover:scale-105 cursor-default duration-300 border p-4 rounded m-2 grow">REDE</li>
+                
+                <li class="hover:scale-105 cursor-default duration-300 border p-4 rounded m-2 grow">PDT</li>
+                
+                <li class="hover:scale-105 cursor-default duration-300 border p-4 rounded m-2 grow">PSD</li>
+                
+                <li class="hover:scale-105 cursor-default duration-300 border p-4 rounded m-2 grow">PSDB</li>
+                
+                <li class="hover:scale-105 cursor-default duration-300 border p-4 rounded m-2 grow">SOLIDARIEDADE</li>
+                
+                <li class="hover:scale-105 cursor-default duration-300 border p-4 rounded m-2 grow">PSOL</li>
+                
+                <li class="hover:scale-105 cursor-default duration-300 border p-4 rounded m-2 grow">NOVO</li>
+                
+                <li class="hover:scale-105 cursor-default duration-300 border p-4 rounded m-2 grow">PC do B</li>
+                
+                <li class="hover:scale-105 cursor-default duration-300 border p-4 rounded m-2 grow">AGIR</li>
+                
+                <li class="hover:scale-105 cursor-default duration-300 border p-4 rounded m-2 grow">PRD</li>
+                
+            </ul>
+        </div>
 
-    <h2>Quantidade de Candidatos por Faixa Etária</h2>
-    <table id="faixaEtaria"></table>
+        <div class="border p-4 rounded m-4">
+            <h2 class="text-gray-600 text-center text-xl font-bold mb-4 pb-4 border-b">Quantidade de Candidatos por Faixa Etária</h2>
+            <ul>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">Até 21 anos:</span> <span>138</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">22 a 40 anos:</span> <span>3555</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">41 a 60 anos:</span> <span>5571</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">Acima de 60 anos:</span> <span>920</span></li>
+                
+            </ul>
+        </div>
 
-    <h2>Percentual de Candidatos por Cargo</h2>
-    <table id="percentualPorCargo"></table>
+        <div class="border p-4 rounded m-4">
+            <h2 class="text-gray-600 text-center text-xl font-bold mb-4 pb-4 border-b">Percentual de Candidatos por Cargo e Grau de Instrução</h2>
+            
+            <h3 class="text-gray-600 font-bold mt-8 text-lg">VEREADOR</h3>
+            <ul>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">ENSINO MÉDIO COMPLETO:</span> <span>39.67%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">SUPERIOR COMPLETO:</span> <span>24.52%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">ENSINO FUNDAMENTAL INCOMPLETO:</span> <span>14.52%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">ENSINO FUNDAMENTAL COMPLETO:</span> <span>9.69%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">ENSINO MÉDIO INCOMPLETO:</span> <span>5.09%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">SUPERIOR INCOMPLETO:</span> <span>3.98%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">LÊ E ESCREVE:</span> <span>2.53%</span></li>
+                
+            </ul>
+            
+            <h3 class="text-gray-600 font-bold mt-8 text-lg">PREFEITO</h3>
+            <ul>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">SUPERIOR COMPLETO:</span> <span>56.08%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">ENSINO MÉDIO COMPLETO:</span> <span>25.67%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">ENSINO FUNDAMENTAL INCOMPLETO:</span> <span>6.65%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">SUPERIOR INCOMPLETO:</span> <span>4.56%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">ENSINO FUNDAMENTAL COMPLETO:</span> <span>3.80%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">ENSINO MÉDIO INCOMPLETO:</span> <span>2.09%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">LÊ E ESCREVE:</span> <span>1.14%</span></li>
+                
+            </ul>
+            
+            <h3 class="text-gray-600 font-bold mt-8 text-lg">VICE-PREFEITO</h3>
+            <ul>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">SUPERIOR COMPLETO:</span> <span>42.37%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">ENSINO MÉDIO COMPLETO:</span> <span>32.02%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">ENSINO FUNDAMENTAL COMPLETO:</span> <span>9.23%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">ENSINO FUNDAMENTAL INCOMPLETO:</span> <span>8.10%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">ENSINO MÉDIO INCOMPLETO:</span> <span>3.39%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">SUPERIOR INCOMPLETO:</span> <span>3.39%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">LÊ E ESCREVE:</span> <span>1.51%</span></li>
+                
+            </ul>
+            
+        </div>
+    
+        <div class="border p-4 rounded m-4">
+            <h2 class="text-gray-600 text-center text-xl font-bold mb-4 pb-4 border-b">Percentual de Candidatos por Cargo e Gênero</h2>
+            
+            <h3 class="text-gray-600 font-bold mt-8 text-lg">VEREADOR</h3>
+            <ul>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">MASCULINO:</span> <span>65.11%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">FEMININO:</span> <span>34.89%</span></li>
+                
+            </ul>
+            
+            <h3 class="text-gray-600 font-bold mt-8 text-lg">PREFEITO</h3>
+            <ul>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">MASCULINO:</span> <span>78.52%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">FEMININO:</span> <span>21.48%</span></li>
+                
+            </ul>
+            
+            <h3 class="text-gray-600 font-bold mt-8 text-lg">VICE-PREFEITO</h3>
+            <ul>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">MASCULINO:</span> <span>73.82%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">FEMININO:</span> <span>26.18%</span></li>
+                
+            </ul>
+            
+        </div>
 
-    <script>
-        fetch('/statistics')
-            .then(response => response.json())
-            .then(data => {
-                // Candidatos por Cargo
-                const cargoTable = document.getElementById('candidatosPorCargo');
-                cargoTable.innerHTML = <tr><th>Cargo</th><th>Quantidade</th></tr> +
-                    Object.entries(data.candidatos_por_cargo).map(([cargo, quantidade]) =>
-                        <tr><td>${cargo}</td><td>${quantidade}</td></tr>
-                    ).join('');
-
-                // Partidos para Prefeito
-                const partidosList = document.getElementById('partidosPrefeito');
-                data.partidos_prefeito.forEach(partido => {
-                    partidosList.innerHTML += <li>${partido}</li>;
-                });
-
-                // Faixa Etária
-                const faixaTable = document.getElementById('faixaEtaria');
-                faixaTable.innerHTML = <tr><th>Faixa Etária</th><th>Quantidade</th></tr> +
-                    Object.entries(data.faixa_etaria).map(([faixa, quantidade]) =>
-                        <tr><td>${faixa.replace(/_/g, ' ')}</td><td>${quantidade}</td></tr>
-                    ).join('');
-
-                // Percentual por Cargo
-                const percentualTable = document.getElementById('percentualPorCargo');
-                percentualTable.innerHTML = <tr><th>Cargo</th><th>Grau de Instrução</th><th>Gênero</th><th>Estado Civil</th></tr> +
-                    Object.entries(data.percentual_por_cargo).map(([cargo, stats]) =>
-                        `<tr>
-                            <td>${cargo}</td>
-                            <td>${JSON.stringify(stats.grau_instrucao)}</td>
-                            <td>${JSON.stringify(stats.genero)}</td>
-                            <td>${JSON.stringify(stats.estado_civil)}</td>
-                        </tr>`
-                    ).join('');
-            });
-    </script>
+        <div class="border p-4 rounded m-4">
+            <h2 class="text-gray-600 text-center text-xl font-bold mb-4 pb-4 border-b">Percentual de Candidatos por Cargo e Estado Civil</h2>
+            
+            <h3 class="text-gray-600 font-bold mt-8 text-lg">VEREADOR</h3>
+            <ul>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">CASADO(A):</span> <span>50.67%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">SOLTEIRO(A):</span> <span>37.70%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">DIVORCIADO(A):</span> <span>9.06%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">VIÚVO(A):</span> <span>2.08%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">SEPARADO(A) JUDICIALMENTE:</span> <span>0.48%</span></li>
+                
+            </ul>
+            
+            <h3 class="text-gray-600 font-bold mt-8 text-lg">PREFEITO</h3>
+            <ul>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">CASADO(A):</span> <span>70.53%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">SOLTEIRO(A):</span> <span>18.82%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">DIVORCIADO(A):</span> <span>7.98%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">VIÚVO(A):</span> <span>2.47%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">SEPARADO(A) JUDICIALMENTE:</span> <span>0.19%</span></li>
+                
+            </ul>
+            
+            <h3 class="text-gray-600 font-bold mt-8 text-lg">VICE-PREFEITO</h3>
+            <ul>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">CASADO(A):</span> <span>61.21%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">SOLTEIRO(A):</span> <span>28.44%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">DIVORCIADO(A):</span> <span>7.91%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">VIÚVO(A):</span> <span>1.69%</span></li>
+                
+                <li class="flex justify-between"><span class="font-semibold text-gray-600">SEPARADO(A) JUDICIALMENTE:</span> <span>0.75%</span></li>
+                
+            </ul>
+            
+        </div>
+    </div>
 </body>
 </html>
+    

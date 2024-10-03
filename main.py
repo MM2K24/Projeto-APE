@@ -1,4 +1,5 @@
 import pandas as pd
+import webbrowser  # Importar o módulo para abrir o navegador
 
 # 1. Carregar a base de dados
 def carregar_dados(caminho):
@@ -24,7 +25,7 @@ def listar_candidatos_por_municipio(df, nome_municipio, codigo_cargo):
     municipio_selecionado = df[df['NM_UE'].str.contains(nome_municipio, case=False, na=False)]
     
     if municipio_selecionado.empty:
-        print(f'Nenhum município encontrado com o nome "{nome_municipio} (Verifique a acentuação no nome do município)".')
+        print(f'Nenhum município encontrado com o nome "{nome_municipio}". (Verifique a acentuação no nome do município).')
         return None
 
     candidatos = municipio_selecionado[municipio_selecionado['CD_CARGO'] == codigo_cargo]
@@ -34,16 +35,19 @@ def listar_candidatos_por_municipio(df, nome_municipio, codigo_cargo):
         return candidatos[['NM_CANDIDATO', 'NM_URNA_CANDIDATO', 'NR_CANDIDATO', 'NR_PARTIDO']]
 
 # 3. Função para exibir informações de um candidato específico
-def exibir_informacoes_candidato(df, codigo_candidato):
-    try:
-        codigo_candidato = int(codigo_candidato)
-    except ValueError:
-        print('Código inválido. Insira um valor numérico.')
+def exibir_informacoes_candidato(df, codigo_candidato, nome_municipio):
+    # Filtrar pelo município
+    municipio_selecionado = df[df['NM_UE'].str.contains(nome_municipio, case=False, na=False)]
+    
+    if municipio_selecionado.empty:
+        print(f'Nenhum município encontrado com o nome "{nome_municipio}". (Verifique a acentuação no nome do município).')
         return None
 
-    candidato = df[df['SQ_CANDIDATO'] == codigo_candidato]
+    # Filtrar o candidato pela sua votação
+    candidato = municipio_selecionado[municipio_selecionado['NR_CANDIDATO'].astype(str) == str(codigo_candidato)]
+    
     if candidato.empty:
-        print('Candidato não encontrado.')
+        print(f'Candidato com número de votação "{codigo_candidato}" não encontrado no município "{nome_municipio}".')
     else:
         return candidato[['NM_CANDIDATO', 'NM_URNA_CANDIDATO', 'NR_CANDIDATO', 'NR_PARTIDO']]
 
@@ -66,12 +70,17 @@ def menu(df):
                 print(candidatos.to_string(index=False))
         
         elif escolha == '2':
-            codigo_candidato = input("Digite o código do candidato (SQ_CANDIDATO): ")
-            informacoes = exibir_informacoes_candidato(df, codigo_candidato)
+            nome_municipio = input("Digite o nome do município: ")  # Solicitar o município primeiro
+            codigo_candidato = input("Digite o número de votação do candidato: ")  # Solicitar o número de votação
+            informacoes = exibir_informacoes_candidato(df, codigo_candidato, nome_municipio)
             if informacoes is not None:
                 print(informacoes.to_string(index=False))
+                
         elif escolha == '3':
-            print('Escolha ainda não programada kkkkkk')
+            arquivo_html = 'index.html'  # Substitua pelo caminho do seu arquivo HTML
+            webbrowser.open(arquivo_html)  # Abrir o arquivo HTML no navegador
+            print(f'A página HTML foi aberta: {arquivo_html}')
+            
         elif escolha == '4':
             print("Saindo...")
             break
