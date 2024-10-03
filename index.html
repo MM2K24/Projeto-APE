@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estatísticas de Candidatos</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Estatísticas de Candidatos</h1>
+
+    <h2>Quantidade de Candidatos por Cargo</h2>
+    <table id="candidatosPorCargo"></table>
+
+    <h2>Partidos com Candidatos a Cargo de Prefeito</h2>
+    <ul id="partidosPrefeito"></ul>
+
+    <h2>Quantidade de Candidatos por Faixa Etária</h2>
+    <table id="faixaEtaria"></table>
+
+    <h2>Percentual de Candidatos por Cargo</h2>
+    <table id="percentualPorCargo"></table>
+
+    <script>
+        fetch('/statistics')
+            .then(response => response.json())
+            .then(data => {
+                // Candidatos por Cargo
+                const cargoTable = document.getElementById('candidatosPorCargo');
+                cargoTable.innerHTML = <tr><th>Cargo</th><th>Quantidade</th></tr> +
+                    Object.entries(data.candidatos_por_cargo).map(([cargo, quantidade]) =>
+                        <tr><td>${cargo}</td><td>${quantidade}</td></tr>
+                    ).join('');
+
+                // Partidos para Prefeito
+                const partidosList = document.getElementById('partidosPrefeito');
+                data.partidos_prefeito.forEach(partido => {
+                    partidosList.innerHTML += <li>${partido}</li>;
+                });
+
+                // Faixa Etária
+                const faixaTable = document.getElementById('faixaEtaria');
+                faixaTable.innerHTML = <tr><th>Faixa Etária</th><th>Quantidade</th></tr> +
+                    Object.entries(data.faixa_etaria).map(([faixa, quantidade]) =>
+                        <tr><td>${faixa.replace(/_/g, ' ')}</td><td>${quantidade}</td></tr>
+                    ).join('');
+
+                // Percentual por Cargo
+                const percentualTable = document.getElementById('percentualPorCargo');
+                percentualTable.innerHTML = <tr><th>Cargo</th><th>Grau de Instrução</th><th>Gênero</th><th>Estado Civil</th></tr> +
+                    Object.entries(data.percentual_por_cargo).map(([cargo, stats]) =>
+                        `<tr>
+                            <td>${cargo}</td>
+                            <td>${JSON.stringify(stats.grau_instrucao)}</td>
+                            <td>${JSON.stringify(stats.genero)}</td>
+                            <td>${JSON.stringify(stats.estado_civil)}</td>
+                        </tr>`
+                    ).join('');
+            });
+    </script>
+</body>
+</html>
