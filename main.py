@@ -5,17 +5,31 @@ def carregar_dados(caminho):
     return pd.read_csv(caminho, encoding='latin1', delimiter=';')
 
 # 2. Função para listar candidatos por município e cargo
-def listar_candidatos_por_municipio(df, codigo_municipio, codigo_cargo):
+def listar_candidatos_por_municipio(df, nome_municipio, codigo_cargo):
+    # Mapeamento dos códigos de entrada (1, 2, 3) para os códigos do CSV (11, 12, 13)
+    mapa_cargo = {1: 11, 2: 12, 3: 13}
+
     try:
-        codigo_municipio = int(codigo_municipio)
         codigo_cargo = int(codigo_cargo)
+        if codigo_cargo in mapa_cargo:
+            codigo_cargo = mapa_cargo[codigo_cargo]
+        else:
+            print('Código de cargo inválido. Escolha 1 para Prefeito, 2 para Vice-prefeito, ou 3 para Vereador.')
+            return None
     except ValueError:
-        print('Código inválido. Insira valores numéricos.')
+        print('Código inválido. Insira um valor numérico.')
         return None
 
-    candidatos = df[(df['SG_UE'] == codigo_municipio) & (df['CD_CARGO'] == codigo_cargo)]
+    # Filtrar pelo nome do município
+    municipio_selecionado = df[df['NM_UE'].str.contains(nome_municipio, case=False, na=False)]
+    
+    if municipio_selecionado.empty:
+        print(f'Nenhum município encontrado com o nome "{nome_municipio} (Verifique a acentuação no nome do município)".')
+        return None
+
+    candidatos = municipio_selecionado[municipio_selecionado['CD_CARGO'] == codigo_cargo]
     if candidatos.empty:
-        print('Nenhum candidato encontrado para o município e cargo fornecidos.')
+        print(f'Nenhum candidato encontrado para o município "{nome_municipio}" e cargo fornecidos.')
     else:
         return candidatos[['NM_CANDIDATO', 'NM_URNA_CANDIDATO', 'NR_CANDIDATO', 'NR_PARTIDO']]
 
@@ -45,9 +59,9 @@ def menu(df):
         escolha = input("Escolha uma opção: ")
         
         if escolha == '1':
-            codigo_municipio = input("Digite o código do município: ")
-            codigo_cargo = input("Digite o código do cargo (por exemplo, 11 para prefeito, 12 para vice-prefeito e 13 para vereador): ")
-            candidatos = listar_candidatos_por_municipio(df, codigo_municipio, codigo_cargo)
+            nome_municipio = input("Digite o nome do município: ")
+            codigo_cargo = input("Digite o código do cargo (1 para prefeito, 2 para vice-prefeito e 3 para vereador): ")
+            candidatos = listar_candidatos_por_municipio(df, nome_municipio, codigo_cargo)
             if candidatos is not None:
                 print(candidatos.to_string(index=False))
         
